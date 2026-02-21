@@ -1,0 +1,10 @@
+{% extends "_layout.html" %}
+{% block content %}
+  <h1>Bem-vindo{% if user %}, {{ user.name }}{% endif %}</h1>
+  <p>Use este sistema para cotar fretes com base na tabela de redespacho (MT).</p>
+  {% if user %}
+    <p><a class="btn" href="/cotacao">Fazer uma cotação</a></p>
+  {% else %}
+    <p><a class="btn" href="/login">Entrar</a> ou <a class="btn secondary" href="/register">Cadastrar</a></p>
+  {% endif %}
+{% endblock %}

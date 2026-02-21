@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>{{ title or "Frete Cotador" }}</title>
+  <link rel="stylesheet" href="/static/app.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container row">
+      <div class="brand"><a href="/">Frete Cotador</a></div>
+      <nav class="nav">
+        {% if user %}
+          <a href="/cotacao">Cotação</a>
+          <a href="/historico">Histórico</a>
+          {% if user.is_admin %}
+            <a href="/admin">Admin</a>
+          {% endif %}
+          <form action="/logout" method="post" style="display:inline">
+            <button class="linkbtn" type="submit">Sair</button>
+          </form>
+        {% else %}
+          <a href="/login">Entrar</a>
+          <a href="/register">Cadastrar</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="container footer">
+    <small>© {{ (now().year if now else 2026) }} • Exemplo de app. Ajuste regras comerciais conforme seu contrato.</small>
+  </footer>
+</body>
+</html>

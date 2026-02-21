@@ -1,0 +1,27 @@
+:root { --bg:#0b1220; --card:#111a2d; --text:#eaf0ff; --muted:#b5c0e0; --accent:#5aa7ff; --danger:#ff6b6b; --ok:#3ddc97; }
+*{ box-sizing:border-box; }
+body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu; background:#070c16; color:var(--text); }
+a{ color:var(--accent); text-decoration:none; }
+.container{ max-width:980px; margin:0 auto; padding:18px; }
+.topbar{ background:var(--bg); border-bottom:1px solid rgba(255,255,255,.08); }
+.row{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
+.nav a, .linkbtn{ margin-left:12px; }
+.linkbtn{ background:none; border:none; color:var(--accent); cursor:pointer; font:inherit; padding:0; }
+.brand a{ font-weight:700; color:var(--text); }
+h1{ font-size:28px; margin:14px 0; }
+h2{ font-size:18px; margin:18px 0 10px; color:var(--muted); }
+.card{ background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:16px; margin:12px 0; }
+label{ display:block; margin:10px 0 6px; color:var(--muted); font-size:14px; }
+input{ width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:#0b1325; color:var(--text); }
+.btn{ display:inline-block; background:var(--accent); color:#061022; border:none; padding:10px 14px; border-radius:10px; font-weight:700; cursor:pointer; }
+.btn.secondary{ background:#223154; color:var(--text); }
+.alert{ background:rgba(255,107,107,.12); border:1px solid rgba(255,107,107,.35); padding:10px 12px; border-radius:10px; }
+.ok{ background:rgba(61,220,151,.10); border:1px solid rgba(61,220,151,.35); padding:10px 12px; border-radius:10px; }
+.grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.grid .full{ grid-column:1 / -1; }
+.table{ width:100%; border-collapse:collapse; margin-top:10px; }
+.table th,.table td{ text-align:left; padding:10px 8px; border-bottom:1px solid rgba(255,255,255,.08); }
+.pill{ background:#0b1325; border:1px solid rgba(255,255,255,.10); padding:8px 10px; border-radius:999px; margin:6px 8px 6px 0; }
+.wrap{ flex-wrap:wrap; justify-content:flex-start; }
+.footer{ opacity:.7; padding-top:30px; }
+@media (max-width:720px){ .grid{ grid-template-columns:1fr; } }

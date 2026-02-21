@@ -1,0 +1,24 @@
+{% extends "_layout.html" %}
+{% block content %}
+  <h1>Histórico</h1>
+  <div class="card">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Data</th><th>Origem</th><th>Destino</th><th>Peso tarifável</th><th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for q in quotes %}
+          <tr>
+            <td>{{ q.created_at.strftime("%d/%m/%Y %H:%M") }}</td>
+            <td>{{ q.origem }}</td>
+            <td>{{ q.destino }}</td>
+            <td>{{ "%.2f"|format(q.peso_tarifavel_kg) }} kg</td>
+            <td><b>R$ {{ "%.2f"|format(q.total) }}</b></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

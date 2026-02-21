@@ -1,0 +1,16 @@
+{% extends "_layout.html" %}
+{% block content %}
+  <h1>Admin</h1>
+  {% if msg %}<div class="ok">{{ msg }}</div>{% endif %}
+  {% if error %}<div class="alert">{{ error }}</div>{% endif %}
+
+  <div class="card">
+    <p><b>Rotas cadastradas:</b> {{ lanes_count }}</p>
+    <h2>Importar tabela (Excel)</h2>
+    <form method="post" action="/admin/import" enctype="multipart/form-data">
+      <input type="file" name="excel" accept=".xlsx" required/>
+      <button class="btn" type="submit">Importar</button>
+    </form>
+    <p><small>Importação nesta tela limpa e recria a tabela de rotas.</small></p>
+  </div>
+{% endblock %}

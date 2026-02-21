@@ -1,0 +1,60 @@
+{% extends "_layout.html" %}
+{% block content %}
+  <h1>Cotação</h1>
+  {% if error %}<div class="alert">{{ error }}</div>{% endif %}
+
+  <form method="post" class="card grid">
+    <div>
+      <label>Origem</label>
+      <input name="origem" list="origens" required placeholder="Ex.: Cuiabá/MT"/>
+      <datalist id="origens">
+        {% for o in origens %}<option value="{{ o }}">{% endfor %}
+      </datalist>
+    </div>
+    <div>
+      <label>Destino</label>
+      <input name="destino" list="destinos" required placeholder="Ex.: Alta Floresta"/>
+      <datalist id="destinos">
+        {% for d in destinos %}<option value="{{ d }}">{% endfor %}
+      </datalist>
+    </div>
+
+    <div>
+      <label>Peso real (kg)</label>
+      <input name="peso_real_kg" type="number" step="0.01" min="0" required />
+    </div>
+    <div>
+      <label>Volume (m³)</label>
+      <input name="volume_m3" type="number" step="0.0001" min="0" required />
+    </div>
+    <div>
+      <label>Valor da mercadoria (R$)</label>
+      <input name="valor_mercadoria" type="number" step="0.01" min="0" required />
+    </div>
+
+    <div class="full">
+      <button class="btn" type="submit">Calcular</button>
+    </div>
+  </form>
+
+  {% if result %}
+    <h2>Resultado</h2>
+    <div class="card">
+      <div class="row wrap">
+        <div class="pill"><b>Rota:</b> {{ result.origem }} → {{ result.destino }}</div>
+        <div class="pill"><b>Região:</b> {{ result.regiao }}</div>
+        <div class="pill"><b>Cubagem:</b> {{ result.cubagem_kg_m3 }} kg/m³</div>
+      </div>
+
+      <table class="table">
+        <tr><th>Peso cubado</th><td>{{ result.peso_cubado_kg }} kg</td></tr>
+        <tr><th>Peso tarifável</th><td>{{ result.peso_tarifavel_kg }} kg</td></tr>
+        <tr><th>Frete base</th><td>R$ {{ "%.2f"|format(result.frete_base) }}</td></tr>
+        <tr><th>Ad Valorem</th><td>R$ {{ "%.2f"|format(result.advalorem) }}</td></tr>
+        <tr><th>Total</th><td><b>R$ {{ "%.2f"|format(result.total) }}</b></td></tr>
+      </table>
+
+      <p><small><b>ICMS:</b> {{ result.icms }} • <b>Obs:</b> {{ result.observacao }}</small></p>
+    </div>
+  {% endif %}
+{% endblock %}

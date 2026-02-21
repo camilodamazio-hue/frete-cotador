@@ -1,0 +1,14 @@
+{% extends "_layout.html" %}
+{% block content %}
+  <h1>Cadastrar</h1>
+  {% if error %}<div class="alert">{{ error }}</div>{% endif %}
+  <form method="post" class="card">
+    <label>Nome</label>
+    <input name="name" required />
+    <label>E-mail</label>
+    <input name="email" type="email" required />
+    <label>Senha</label>
+    <input name="password" type="password" minlength="6" required />
+    <button class="btn" type="submit">Criar conta</button>
+  </form>
+{% endblock %}
